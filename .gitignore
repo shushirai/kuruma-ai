@@ -1,0 +1,26 @@
+# 🔽 データセット（学習用生データや分割済みデータ）を除外
+data/dataset_raw/
+data/dataset_split/
+imgs
+
+# 🔽 モデルファイルも除外（例: PyTorchモデル）
+models/
+*.pth
+
+# 🔽 Pythonのキャッシュなど
+__pycache__/
+*.pyc
+
+# 🔽 Macの不可視ファイルやエディタの設定
+.DS_Store
+.vscode/
+
+venv_kuruma-ai/
+*.pyc
+__pycache__/
+
+*.mp4
+
+# ✅ logs ディレクトリがあれば追加（任意）
+logs/
+*.log
