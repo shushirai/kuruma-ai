@@ -8,7 +8,7 @@ import time
 start_time = time.time()
 
 # パラメータ設定
-CONF_THRESHOLD = 0.5       # 信頼度の閾値
+CONF_THRESHOLD = 0.3       # 信頼度の閾値
 MIN_AREA_RATIO = 0.1       # 面積の最小割合（画像全体の面積に対して）
 CENTER_WEIGHT = 2.0        # 中心距離の重み
 
@@ -95,6 +95,8 @@ end_time = time.time()
 elapsed_time = end_time - start_time
 # ログ出力（コンソール & DataFrame表示）
 df = pd.DataFrame(log)
+# CSVとして保存（カレントディレクトリに出力されます）
+df.to_csv("../data/processing_summary.csv", index=False)
 print("\n📊 処理結果サマリー")
 print(df)
 print(f"処理時間: {elapsed_time:.2f}")
