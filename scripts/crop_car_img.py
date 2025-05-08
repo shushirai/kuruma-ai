@@ -3,6 +3,9 @@ from pathlib import Path
 import cv2
 from ultralytics import YOLO
 import pandas as pd
+import time
+
+start_time = time.time()
 
 # パラメータ設定
 CONF_THRESHOLD = 0.5       # 信頼度の閾値
@@ -18,7 +21,9 @@ os.makedirs(output_root, exist_ok=True)
 os.makedirs(discard_root, exist_ok=True)
 
 # YOLOモデル読み込み
-model = YOLO("../models/yolov8l.pt")
+#model = YOLO("../models/yolov8l.pt")
+model = YOLO("../models/yolov8x.pt")
+
 
 # ログ保存用リスト
 log = []
@@ -86,7 +91,10 @@ for car_type in sorted(os.listdir(input_root)):
         "discarded": total_images - saved_images
     })
 
+end_time = time.time()
+elapsed_time = end_time - start_time
 # ログ出力（コンソール & DataFrame表示）
 df = pd.DataFrame(log)
 print("\n📊 処理結果サマリー")
 print(df)
+print(f"処理時間: {elapsed_time:.2f}")
